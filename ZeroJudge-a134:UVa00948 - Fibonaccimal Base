@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[])
+{
+	int a=0,b=1,c,i,j;
+	int fib[40];
+	fib[0]=0;
+	fib[1]=1;
+	for(i=2;i<40;i++)
+	{
+		c=a+b;
+		fib[i]=c;
+		a=b;
+		b=c;
+	}
+	while(scanf("%d",&b)!=EOF)
+	{
+		for(j=0;j<b;j++)
+		{
+			c=0;
+			scanf("%d",&a);
+			printf("%d = ",a);
+			for(i=39;i>1;i--)
+			{
+				if(a>=fib[i])
+				{
+					c=1;
+					a-=fib[i];
+					printf("1");
+				}
+				else
+				{
+					if(c)
+					{
+						printf("0");
+					}
+				}
+			}
+			printf(" (fib)\n");
+		}
+	}
+	return 0;
+}
