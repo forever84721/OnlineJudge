@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[])
+{
+	int n,i,j,b[20001],out,z=1;
+	while(scanf("%d",&n)!=EOF)
+	{
+		memset(b,0,sizeof(b));
+		out=0;
+		int num[n];
+		for(i=0;i<n;i++)
+		{
+			scanf("%d",&num[i]);
+		}
+		for(i=0;i<n;i++)
+		{
+			for(j=i;j<n;j++)
+			{
+				if(b[num[i]+num[j]]==0)
+				{
+					b[num[i]+num[j]]++;
+				}
+				else
+				{
+					out=1;
+					break;
+				}
+			}
+			if(out)
+			{
+				break;
+			}
+		}
+		if(out)
+		{
+			printf("Case #%d: It is not a B2-Sequence.\n",z++);
+		}
+		else
+		{
+			printf("Case #%d: It is a B2-Sequence.\n",z++);
+		}
+	}
+	return 0;
+}
