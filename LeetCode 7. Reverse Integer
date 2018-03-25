@@ -1,0 +1,28 @@
+int reverse(int x) 
+{
+    int a=0;
+	int ans=0;
+    if(x<0)
+	{
+    	x=-x;
+    	a=1;
+	}
+    while(x>0)
+    {
+    	if(ans>214748364)
+    	{
+    		return 0;
+		}
+		else if(ans==214748364 && x%10>7)
+		{
+			return 0;
+		}
+    	ans=ans*10+x%10;
+    	x/=10;
+	}
+    if(a==1)
+    {
+    	ans=-ans;
+	}
+    return ans;
+}
