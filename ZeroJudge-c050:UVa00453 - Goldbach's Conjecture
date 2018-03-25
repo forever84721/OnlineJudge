@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+int prime[1000000];
+void eratosthenes()
+{
+	int i,j,k;
+    for (i=0; i<1000000; i++)
+    {
+    	prime[i] = 0;
+	}
+    memset(prime,0,sizeof(prime)); 
+    prime[0] = 1;
+    prime[1] = 1;
+    int sqrt_1000000 = sqrt(1000000);
+    for (i=2; i<=sqrt_1000000; i++)
+    {
+    	if(!prime[i])
+        {
+        	for (k=(1000000-1)/i, j=i*k; k>=i; k--, j-=i)
+            {
+            	if(!prime[k])
+                {
+                	prime[j] = 1;
+				}
+			}
+		}
+	}          
+}
+int main(int argc, char *argv[])
+{
+	int n,i;
+	eratosthenes();
+	prime[2] = 1;
+	while(scanf("%d",&n)!=EOF)
+	{
+		for(i=3;i<n;i++)
+		{
+			if(prime[i]==0&&prime[n-i]==0)
+			{
+				printf("%d = %d + %d\n",n,i,n-i);
+				break;
+			}
+		}
+		
+	}
+	return 0;
+}
