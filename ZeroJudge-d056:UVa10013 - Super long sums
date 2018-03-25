@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[])
+{
+	int n,i,j,m,x;
+	while(scanf("%d",&n)!=EOF)
+	{
+		for(i=0;i<n;i++)
+		{
+			scanf("%d",&m);
+			int num[m];
+			for(j=0;j<m;j++)
+			{
+				scanf("%d%d",&num[j],&x);
+				num[j]+=x;
+			}
+			for(j=m-1;j>=0;j--)
+			{
+				if(num[j]>=10)
+				{
+					num[j]-=10;
+					num[j-1]++;
+				}
+			}
+			for(j=0;j<m;j++)
+			{
+				printf("%d",num[j]);
+			}
+			printf("\n");
+		}
+	}
+	return 0;
+}
